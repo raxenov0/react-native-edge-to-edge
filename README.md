@@ -1,23 +1,61 @@
-# react-native-edge-to-edge
+# rn-edge-to-edge
 
-React-native - apply 'Edge-to-edge' mode for android platform
+### ReactNative - apply 'Edge-to-edge' mode for android platform
 
 ## Installation
 
 ```sh
-npm install react-native-edge-to-edge
+npm install rn-edge-to-edge
 ```
 
+
+## Setup
+### Android
+
+1. Add inside your `android/app/src/main/java/com/yourprojectname/MainActivity.{java,kt}` file:
+
+```
+import androidx.activity.enableEdgeToEdge
+
+class MainActivity: ReactActivity() {
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+      ...
+      enableEdgeToEdge()
+      super.onCreate(null);
+  }
+
+  ...
+}
+```
 ## Usage
 
-
 ```js
-import { multiply } from 'react-native-edge-to-edge';
+import { StatusBar } from 'rn-edge-to-edge';
 
 // ...
 
-const result = await multiply(3, 7);
+return (
+    <NavigationContainer
+      linking={platformLinking}
+      theme={Theme}
+      onReady={isReadyCallback}>
+        <StatusBar 
+            barStyle='dark-content'
+            backgroundColor='#ff007c'
+        />
+        <RootStack />
+    </NavigationContainer>
+  );
 ```
+
+### Props
+```
+    barStyle: "light-content" | "dark-content";
+    animated = boolean
+    backgroundColor = ColorValue | null
+```
+ℹ️ **If you using prop "backgroundColor" equal to "null", the navigationBar will be transparent** 
 
 
 ## Contributing
